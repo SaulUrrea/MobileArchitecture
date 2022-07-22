@@ -10,7 +10,7 @@ class GetQuotesUseCase @Inject constructor(
     private val repository: QuoteRepository
 ) {
 
-    suspend operator fun invoke(): List<Quote> {
+    suspend operator fun invoke(): List<Quote>? {
         val quotes = repository.getAllQuotesFromApi()
 
         return if (quotes.isNotEmpty()) {

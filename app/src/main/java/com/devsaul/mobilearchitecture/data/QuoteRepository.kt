@@ -18,7 +18,7 @@ class QuoteRepository @Inject constructor(
         return response.map { it.toDomain() }
     }
 
-    suspend fun getAllQuotesFromDatabase(): List<Quote> {
+    suspend fun getAllQuotesFromDatabase(): List<Quote>? {
         val response = quoteDao.getAllQuote()
         return response.map { it.toDomain() }
     }

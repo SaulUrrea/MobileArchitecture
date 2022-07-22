@@ -12,7 +12,7 @@ class GetRandomQuoteUseCase @Inject constructor(
     suspend operator fun invoke(): Quote? {
         val quotes =
             repository.getAllQuotesFromDatabase()
-        if (!quotes.isEmpty()) {
+        if (!quotes.isNullOrEmpty()) {
             val randomNumber = (quotes.indices).random()
             return quotes[randomNumber]
         }
