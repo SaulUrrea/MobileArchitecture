@@ -1,12 +1,15 @@
-package com.devsaul.mobilearchitecture.view
+package com.devsaul.mobilearchitecture.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.devsaul.mobilearchitecture.databinding.ActivityMainBinding
-import com.devsaul.mobilearchitecture.viewmodel.QuoteViewModel
+import com.devsaul.mobilearchitecture.ui.viewmodel.QuoteViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val quoteViewModel: QuoteViewModel by viewModels()
@@ -16,11 +19,16 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        quoteViewModel.quoteModel.observe(this, Observer { currentQuote ->
+        quoteViewModel.onCreate()
+
+        quoteViewModel.quoteModel.observe(this) { currentQuote ->
             //Configuramos nuestro observador con los datos que cambian
             binding.tvQuote.text = currentQuote.quote
             binding.tvAuthor.text = currentQuote.author
-        })
+        }
+        quoteViewModel.isLoading.observe(this) {
+            binding.progress.isVisible = it
+        }
 
         binding.viewContainer.setOnClickListener {
             quoteViewModel.randomQuote()

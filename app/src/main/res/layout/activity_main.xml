@@ -6,13 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroud"
-    tools:context=".view.MainActivity">
+    tools:context=".ui.view.MainActivity">
 
     <TextView
         android:id="@+id/tvQuote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Hello World!"
         android:gravity="center"
         android:padding="16dp"
         android:textColor="@color/white"
@@ -21,13 +20,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Hello World!" />
 
     <TextView
         android:id="@+id/tvAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Hello World!"
         android:gravity="center"
         android:padding="16dp"
         android:textColor="@color/white"
@@ -35,6 +34,17 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Hello World!" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
